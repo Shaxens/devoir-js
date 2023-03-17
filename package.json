@@ -1,0 +1,31 @@
+{
+  "name": "devoir",
+  "version": "1.0.0",
+  "description": "Devoir de js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shaxens/devoir-js.git"
+  },
+  "keywords": [
+    "js"
+  ],
+  "author": "Arthur VIETTI",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shaxens/devoir-js/issues"
+  },
+  "homepage": "https://github.com/Shaxens/devoir-js#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "cors-anywhere": "^0.4.4",
+    "express": "^4.18.2",
+    "lodash": "^4.17.21",
+    "nodemon": "^2.0.21",
+    "request": "^2.88.2",
+    "uuidv4": "^6.2.13"
+  }
+}
