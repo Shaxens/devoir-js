@@ -3,85 +3,328 @@
 
 @import 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap';
 
- .pokemon-body {
-	 display: flex;
-	 justify-content: center;
-	 align-items: center;
-	 min-height: 100vh;
-	 font-family: "Roboto";
-}
- .pokemon-card {
-	 display: flex;
-	 justify-content: center;
-	 align-items: center;
-	 height: 300px;
-	 width: 250px;
-	 background: linear-gradient(#f9bc61, #fde8c9);
-	 box-shadow: 0px 6px 6px -3px rgba(0, 0, 0, 0.2), 0px 10px 14px 1px rgba(0, 0, 0, 0.14), 0px 4px 18px 3px rgba(0, 0, 0, 0.12);
-	 border-radius: 8px;
-}
- .pokemon-content {
-	 display: flex;
-	 flex-direction: column;
-	 height: 88%;
-	 width: 88%;
-	 background-color: white;
-	 border-radius: 8px;
-}
- .pokemon-content > .top {
-	 display: flex;
-	 justify-content: flex-end;
-	 align-items: center;
-	 height: 20%;
-	 background-color: white;
-}
- .pokemon-content > .top p {
-	 font-weight: bold;
-	 font-size: 12px;
-}
- .pokemon-content > .top .color {
-	 height: 20px;
-	 width: 20px;
-	 margin-left: 5px;
-	 margin-right: 10px;
-	 border-radius: 50%;
-	 background-color: orange;
-}
- .pokemon-content > .middle {
-	 display: flex;
-	 justify-content: space-between;
-	 align-items: center;
-	 height: 40%;
-	 background: linear-gradient(#f9bc61, #fde8c9 75%);
-	 padding-left: 15px;
-	 padding-right: 15px;
-}
- .pokemon-content > .middle img {
-	 width: 60%;
-}
- .pokemon-content > .middle div > p:first-child {
-	 margin-bottom: 5px;
-	 font-size: 12px;
-}
- .pokemon-content > .middle div > p:last-child {
-	 margin: 0;
-	 font-weight: bold;
-}
- .pokemon-content > .bottom {
-	 display: flex;
-	 justify-content: space-between;
-	 align-items: center;
-	 height: 40%;
-	 padding-left: 30px;
-	 padding-right: 30px;
-}
- .pokemon-content > .bottom div {
-	 display: flex;
-	 flex-direction: column;
-	 align-items: center;
-}
- .pokemon-content > .bottom div p:first-child {
-	 font-weight: bold;
-}
- 
+	#pokemon-list {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
 
+	.pokemon-body {
+		display: flex;
+		padding: 20px;
+		font-family: "Roboto";
+	}
+
+	.pokemon-card {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 300px;
+		width: 250px;
+		background: linear-gradient(#f9bc61, #fde8c9);
+		box-shadow: 0px 6px 6px -3px rgba(0, 0, 0, 0.2), 0px 10px 14px 1px rgba(0, 0, 0, 0.14), 0px 4px 18px 3px rgba(0, 0, 0, 0.12);
+		border-radius: 8px;
+	}
+
+	.pokemon-content {
+		display: flex;
+		flex-direction: column;
+		height: 88%;
+		width: 88%;
+		background-color: white;
+		border-radius: 8px;
+	}
+
+	.pokemon-content > .top {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		height: 20%;
+		background-color: white;
+	}
+
+	.pokemon-content > .top p {
+		font-weight: bold;
+		font-size: 12px;
+	}
+	
+	.pokemon-content > .top .color {
+		height: 20px;
+		width: 20px;
+		margin-left: 5px;
+		margin-right: 10px;
+		border-radius: 50%;
+		background-color: orange;
+	}
+
+	.pokemon-content > .middle {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: 40%;
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+
+	.pokemon-content > .middle img {
+		width: 60%;
+	}
+
+	.pokemon-content > .middle div > p:first-child {
+		margin-bottom: 5px;
+		font-size: 12px;
+	}
+
+	.pokemon-content > .middle div > p:last-child {
+		margin: 0;
+		font-weight: bold;
+	}
+
+	.pokemon-content > .bottom {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: 40%;
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+
+	.pokemon-content > .bottom div {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.pokemon-content > .bottom div p:first-child {
+		font-weight: bold;
+	}
+
+
+	.badge {
+		display: inline-block;
+		padding: 4px 8px;
+		font-size: 12px;
+		font-weight: bold;
+		border-radius: 8px;
+		margin-right: 4px;
+	}
+	
+	.feu {
+		background-color: #F08030;
+	}
+	
+	.eau {
+		background-color: #6890F0;
+	}
+	
+	.plante {
+		background-color: #78C850;
+	}
+	
+	.vol {
+		background-color: #99ccff;
+	}
+	
+	.insecte {
+		background-color: #66cc66;
+	}
+	
+	.normal {
+		background-color: #cccccc;
+	}
+
+	.électrik {
+		background-color: #f1c40f;
+	}
+	
+	.poison {
+		background-color: #8e44ad;
+	}
+	
+	.sol {
+		background-color: #f39c12;
+	}
+
+	.fée {
+		background-color: #ed91c7;
+	}
+
+	.combat {
+		background-color: #d56723;
+	}
+
+	.psy {
+		background-color: #f366b9;
+	}
+
+	.roche {
+		background-color: #A38C21;
+	}
+	
+	.acier {
+		background-color: #9EB7B8;
+	}
+	
+	.glace {
+		background-color: #51C4E7;
+	}
+
+	.spectre {
+		background-color: #705898;
+	}
+
+	.dragon {
+		background-color: #7038f8;
+	}
+
+	.ténèbres {
+		background-color: #705848;
+	}
+
+	
+	.pokemon-card.feu {
+		background: linear-gradient(#f08030, #f8d078);
+	}
+	.pokemon-card.feu-plante {
+		background: linear-gradient(#f08030, #f8d078, #78c850, #a8b820);
+	}
+	.pokemon-card.feu-vol {
+		background: linear-gradient(#f08030, #f8d078, #a890f0);
+	}
+	.pokemon-card.feu-vol {
+		background: linear-gradient(#f08030, #f8d078, #a890f0);
+	}
+	.pokemon-card.feu-eau {
+		background: linear-gradient(#f08030, #f8d078, #6890f0);
+	}
+	.pokemon-card.feu-combat {
+		background: linear-gradient(#f08030, #f8d078, #c03028, #7038f8);
+	}
+	.pokemon-card.feu-sol {
+		background: linear-gradient(#f08030, #f8d078, #e0c068, #927d44);
+	}
+	.pokemon-card.feu-roche {
+		background: linear-gradient(#f08030, #f8d078, #b8a038, #705848);
+	}
+	.pokemon-card.feu-acier {
+		background: linear-gradient(#f08030, #f8d078, #b8b8d0, #d1c1c0);
+	}
+	.pokemon-card.feu-spectre {
+		background: linear-gradient(#f08030, #f8d078, #705898, #a8a8c0);
+	}
+	.pokemon-card.feu-dragon {
+		background: linear-gradient(#f08030, #f8d078, #7038f8, #b8a038);
+	}
+	.pokemon-card.feu-ténèbres {
+		background: linear-gradient(#f08030, #f8d078, #705848, #a8a8a8);
+	}
+
+
+.pokemon-card.plante-feu {
+    background: linear-gradient(#78c850, #a8b820, #f08030, #f8d078);
+}
+
+.pokemon-card.vol-feu {
+    background: linear-gradient(#a890f0, #f8d078, #f08030);
+}
+
+.pokemon-card.eau-feu {
+    background: linear-gradient(#6890f0, #f8d078, #f08030);
+}
+
+.pokemon-card.combat-feu {
+    background: linear-gradient(#c03028, #7038f8, #f08030, #f8d078);
+}
+
+.pokemon-card.sol-feu {
+    background: linear-gradient(#e0c068, #927d44, #f08030, #f8d078);
+}
+
+.pokemon-card.roche-feu {
+    background: linear-gradient(#b8a038, #705848, #f08030, #f8d078);
+}
+
+.pokemon-card.acier-feu {
+    background: linear-gradient(#b8b8d0, #d1c1c0, #f08030, #f8d078);
+}
+
+.pokemon-card.spectre-feu {
+    background: linear-gradient(#705898, #a8a8c0, #f08030, #f8d078);
+}
+
+.pokemon-card.dragon-feu {
+    background: linear-gradient(#7038f8, #b8a038, #f08030, #f8d078);
+}
+
+.pokemon-card.ténèbres-feu {
+    background: linear-gradient(#705848, #a8a8a8, #f08030, #f8d078);
+}
+
+	
+	.pokemon-card.eau {
+		background: linear-gradient(#87CEFA, #ADD8E6);
+	}
+
+	.pokemon-card.normal {
+		background: linear-gradient(#b5b5b5, #e2e2e2);
+	}
+
+	.pokemon-card.plante {
+		background: linear-gradient(#5da958, #a3d186);
+	}
+
+	.pokemon-card.électrik {
+		background: linear-gradient(#f5c132, #ffe68b);
+	}
+
+	.pokemon-card.glace {
+		background: linear-gradient(#9acff2, #d4ebfc);
+	}
+
+	.pokemon-card.combat {
+		background: linear-gradient(#d54c1f, #ed9b4d);
+	}
+
+	.pokemon-card.poison {
+		background: linear-gradient(#b648bc, #f095ee);
+	}
+
+	.pokemon-card.sol {
+		background: linear-gradient(#be895d, #f2d8a8);
+	}
+
+	.pokemon-card.vol {
+		background: linear-gradient(#83a4e4, #b6c3ed);
+	}
+
+	.pokemon-card.psy {
+		background: linear-gradient(#f971d6, #faaad2);
+	}
+
+	.pokemon-card.insecte {
+		background: linear-gradient(#98d65e, #c2f0a9);
+	}
+
+	.pokemon-card.roche {
+		background: linear-gradient(#a79575, #d1c0a5);
+	}
+
+	.pokemon-card.spectre {
+		background: linear-gradient(#5d5d5d, #b5b5b5);
+	}
+
+	.pokemon-card.dragon {
+		background: linear-gradient(#ff881c, #ffc071);
+	}
+
+	.pokemon-card.acier {
+		background: linear-gradient(#838383, #b2b2b2);
+	}
+
+	.pokemon-card.ténèbres {
+		background: linear-gradient(#383838, #a0a0a0);
+	}
+
+	.pokemon-card.fée {
+		background: linear-gradient(#ed77aa, #fad4e4);
+	}

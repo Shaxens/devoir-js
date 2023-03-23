@@ -10,7 +10,7 @@ fetch('/api/pokemon')
 
       
       const card = document.createElement('div');
-      card.classList.add('pokemon-card');
+      card.classList.add('pokemon-card', `${pokemon.apiTypes[0].name.toLowerCase()}-${pokemon?.apiTypes[1]?.name?.toLowerCase()}`);
 
       const content = document.createElement('div');
       content.classList.add('pokemon-content')
@@ -35,6 +35,16 @@ fetch('/api/pokemon')
       hp.classList.add('pokemon-stats');
       hp.innerHTML = `<strong>HP:</strong> ${pokemon.stats.HP}`;
 
+      pokemon.apiTypes.forEach(type => {
+        const badge = document.createElement('span');
+        const br = document.createElement('br');
+        badge.classList.add('badge', type.name.toLowerCase());
+        badge.innerText = type.name;
+        title.appendChild(br);
+        title.appendChild(badge);
+      });
+
+      
       const detail = document.createElement('button');
       detail.classList.add('add-to-cart-button');
       detail.innerHTML = `Détails`;
