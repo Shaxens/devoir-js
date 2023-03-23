@@ -1,116 +1,118 @@
+require('dotenv').config();
 const express = require('express');
-const request = require('request');
 const app = express();
-let port = 3000;
-const apiVersion  = `https://ddragon.leagueoflegends.com/api/versions.json`
+const port = 3000;
 
+const mongoose = require('mongoose');
+mongoose.set('strictQuery', false);
 
-const champList = [];
-const itemsList = [];
-const itemsImg = [];
+const dbUrl = process.env.DB;
 
-/**
- * On fait une requête vers l'api pour get tous les champions et leurs images en fonction de la version actuelle de LoL
- */
-request(apiVersion, (error, response, body) => {
-  if (!error && response.statusCode == 200) {
-    const version = JSON.parse(body)[0];
-    
-    request(`http://ddragon.leagueoflegends.com/cdn/${version}/data/fr_FR/champion.json`, (error, response, body) => {
-      if (!error && response.statusCode == 200) {
-        const champs = JSON.parse(body).data;
-        
-        for (const champName in champs) {
-          const champ = champs[champName];
-          champ.image = `http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champ.id}.png`;
+let promise = mongoose.connect(dbUrl,{useNewUrlParser : true, useUnifiedTopology: true})
 
-          // Requête vers l'API pour récupérer les skins du champion
-          request(`https://ddragon.leagueoflegends.com/cdn/${version}/data/fr_FR/champion/${champ.id}.json`, (error, response, body) => {
-            if (!error && response.statusCode == 200) {
-              const champData = JSON.parse(body).data[champ.id];
-              const skins = champData.skins;
-              
-              // Générer les URL des images splash des skins
-              const skinImages = skins.map(skin => `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champ.id}_${skin.num}.jpg`);
-              
-              // Ajouter la liste des images splash au champion
-              champ.skinImages = skinImages;
-            } else {
-              console.log(error);
-            }
-          });
-
-          champList.push(champ);
-        }
-      } else {
-        console.log(error);
-      }
-    });
-
-    request(`http://ddragon.leagueoflegends.com/cdn/${version}/data/fr_FR/item.json`, (error, response, body) => {
-      if (!error && response.statusCode == 200) {
-        itemsList.push(JSON.parse(body));
-        request(`http://ddragon.leagueoflegends.com/cdn/${version}/data/fr_FR/item.json`, (error, response, body) => {
-          if (!error && response.statusCode == 200) {
-            const itemsData = JSON.parse(body).data;
-            
-            for (const itemId in itemsData) {
-              const item = itemsData[itemId];
-              const image = item.image.full;
-              item.image = `http://ddragon.leagueoflegends.com/cdn/${version}/img/item/${image}`;
-              itemsImg.push(item.image)
-            }
-          } else {
-            console.log(error);
-          }
-        });
-      } else {
-        console.log(error);
-      }
-    })
-  } else {
-    console.log(error);
-  }
+const pokemonSchema = new mongoose.Schema({
+    id: Number,
+    pokedexId: Number,
+    name: String,
+    image: String,
+    sprite: String,
+    slug: String,
+    stats: {
+        HP: Number,
+        attack: Number,
+        defense: Number,
+        special_attack: Number,
+        special_defense: Number,
+        speed: Number
+    },
+    apiTypes: [{
+        name: String,
+        image: String
+    }],
+    apiGeneration: Number,
+    apiResistances: [{
+        name: String,
+        damage_multiplier: Number,
+        damage_relation: String
+    }],
+    apiEvolutions: [{
+        name: String,
+        pokedexId: Number
+    }],
+    apiPreEvolution: String,
+    apiResistancesWithAbilities: Array
 });
 
-app.use('/assets', express.static('./client/assets'));
-app.use('/pages', express.static('./client/pages'))
-app.use(express.json())
+const Pokemon = mongoose.model('pokemonList', pokemonSchema, 'pokemonList');
 
-app.listen(port, () => {
-  console.log(`Listening on port ${port}`)
-})
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use('/assets', express.static('./client/assets'));
+app.use('/pages', express.static('./client/pages'));
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/client/index.html')
-})
-
-app.get('/champs', (req, res) => {
-  res.json(champList);
+    res.sendFile(__dirname + '/client/index.html');
 });
 
-
-app.get('/champs/:id', (req, res) => {
-  let id = req.params.id;
-  const champ = champList.find(champ => champ.id === id);
-  res.send({champ, itemsList, itemsImg});
+app.get('/api/pokemon', (req, res) => {
+    Pokemon.find((err, pokemon) => {
+        if (err) {
+            res.send(err);
+        } else {
+            res.json(pokemon);
+        }
+    });
 });
 
-
-app.delete('/champs/:id', (req, res) => {
-  let id = req.params.id;
-  const champ = champList.find(champ => champ.id === id);
-  res.send(champ);
-})
-
-app.post('/champs/:id', (req, res) => {
-  let id = req.params.id;
-  const champ = champList.find(champ => champ.id === id);
-  res.sendStatus(champ);
-})
-
-app.put('/champs/:id', (req, res) => {
-  let id = req.params.id;
-  const champ = champList.find(champ => champ.id === id);
-  res.sendStatus(champ);
+app.post('/api/pokemon', (req, res) => {
+    const newPokemon = new Pokemon(req.body);
+    newPokemon.save((err, pokemon) => {
+        if (err) {
+            res.send(err);
+        } else {
+            res.json(pokemon);
+        }
+    });
 });
+
+app.get('/api/pokemon/:id', (req, res) => {
+    Pokemon.findOne({ id: req.params.id }, (err, pokemon) => {
+        if (err) {
+            res.send(err);
+        } else {
+            res.json(pokemon);
+        }
+    });
+});
+
+app.put('/api/pokemon/:id', (req, res) => {
+    Pokemon.findOneAndUpdate({ id: req.params.id }, req.body, { new: true }, (err, pokemon) => {
+        if (err) {
+            res.send(err);
+        } else {
+            res.json(pokemon);
+        }
+    });
+});
+
+app.delete('/api/pokemon/:id', (req, res) => {
+    Pokemon.findOneAndDelete({ id: req.params.id }, (err, pokemon) => {
+        if (err) {
+            res.send(err);
+        } else {
+            res.json(pokemon);
+        }
+    });
+});
+
+promise.then((database) => {
+  console.log('Connected');
+  app.listen(port, () => {
+      console.log(`App listening on port : ${port}`);
+  });
+});
+
+promise.catch(err => console.log(err));
+
+
+
