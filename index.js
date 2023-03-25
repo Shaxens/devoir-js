@@ -1,3 +1,5 @@
+const { ObjectId } = require('bson');
+const axios = require('axios');
 require('dotenv').config();
 const express = require('express');
 const app = express();
@@ -7,6 +9,7 @@ const mongoose = require('mongoose');
 mongoose.set('strictQuery', false);
 
 const dbUrl = process.env.DB;
+const apiUrl = process.env.API_URL;
 
 let promise = mongoose.connect(dbUrl,{useNewUrlParser : true, useUnifiedTopology: true})
 
@@ -50,9 +53,28 @@ app.use(express.json());
 app.use('/assets', express.static('./client/assets'));
 app.use('/pages', express.static('./client/pages'));
 
+
+/************ Pages routes ************/
+
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/client/index.html');
 });
+
+app.get('/pokemon/:id', async (req, res) => {
+    try {
+        const response = await axios.get(`${apiUrl}/pokemon/${ObjectId(req.params.id)}`);
+        const pokemon = response.data;
+        if (!pokemon) {
+            return res.status(404).send('Pokémon non trouvé');
+        }
+        res.sendFile(__dirname + '/client/pages/details.html')
+        } catch (err) {
+        console.error(err);
+        res.status(500).send('Erreur du serveur');
+        }
+    });
+
+/************ Api routes ************/
 
 app.get('/api/pokemon', (req, res) => {
     Pokemon.find((err, pokemon) => {
@@ -75,15 +97,15 @@ app.post('/api/pokemon', (req, res) => {
     });
 });
 
-app.get('/api/pokemon/:id', (req, res) => {
-    Pokemon.findOne({ id: req.params.id }, (err, pokemon) => {
-        if (err) {
-            res.send(err);
-        } else {
-            res.json(pokemon);
+app.get('/api/pokemon/:id', async (req, res) => {
+    try {
+        const pokemon = await Pokemon.findOne({ _id: ObjectId(req.params.id) });
+        res.json(pokemon);
+        } catch (err) {
+        console.error(err);
+        res.status(500).send('Server Error');
         }
     });
-});
 
 app.put('/api/pokemon/:id', (req, res) => {
     Pokemon.findOneAndUpdate({ id: req.params.id }, req.body, { new: true }, (err, pokemon) => {
@@ -106,13 +128,10 @@ app.delete('/api/pokemon/:id', (req, res) => {
 });
 
 promise.then((database) => {
-  console.log('Connected');
-  app.listen(port, () => {
-      console.log(`App listening on port : ${port}`);
-  });
-});
+    console.log('Connected');
+    app.listen(port, () => {
+        console.log(`App listening on port : ${port}`);
+    });
+    });
 
 promise.catch(err => console.log(err));
-
-
-
