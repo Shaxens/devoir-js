@@ -139,5 +139,8 @@ fetch(`/api/pokemon/${pokemonId}`)
     }
     const saveBtn = document.querySelector('#save-btn');
     saveBtn.addEventListener('click', updatePokemon);
-        
+      const backBtn = document.querySelector('#back-btn');
+      backBtn.addEventListener('click', () => {
+        window.location.href = '/';
+      });
   })

@@ -76,8 +76,13 @@
     }
     document.addEventListener('DOMContentLoaded', function() {
       const saveBtn = document.querySelector('#save-btn');
+      const backBtn = document.querySelector('#back-btn');
       console.log(saveBtn);
       saveBtn.addEventListener('click', createPokemon);
+      backBtn.addEventListener('click', () => {
+        window.location.href = '/';
+      });
     });
+    
     
 

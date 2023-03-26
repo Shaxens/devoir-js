@@ -315,74 +315,154 @@
 }
 
 	
-	.pokemon-card.eau {
+	.pokemon-card.eau- {
 		background: linear-gradient(#87CEFA, #ADD8E6);
 	}
 
-	.pokemon-card.normal {
+	.pokemon-card.normal- {
 		background: linear-gradient(#b5b5b5, #e2e2e2);
 	}
 
-	.pokemon-card.plante {
+	.pokemon-card.plante- {
 		background: linear-gradient(#5da958, #a3d186);
 	}
 
-	.pokemon-card.électrik {
+	.pokemon-card.électrik- {
 		background: linear-gradient(#f5c132, #ffe68b);
 	}
 
-	.pokemon-card.glace {
+	.pokemon-card.glace- {
 		background: linear-gradient(#9acff2, #d4ebfc);
 	}
 
-	.pokemon-card.combat {
+	.pokemon-card.combat- {
 		background: linear-gradient(#d54c1f, #ed9b4d);
 	}
 
-	.pokemon-card.poison {
+	.pokemon-card.poison- {
 		background: linear-gradient(#b648bc, #f095ee);
 	}
 
-	.pokemon-card.sol {
+	.pokemon-card.sol- {
 		background: linear-gradient(#be895d, #f2d8a8);
 	}
 
-	.pokemon-card.vol {
+	.pokemon-card.vol- {
 		background: linear-gradient(#83a4e4, #b6c3ed);
 	}
 
-	.pokemon-card.psy {
+	.pokemon-card.psy- {
 		background: linear-gradient(#f971d6, #faaad2);
 	}
 
-	.pokemon-card.insecte {
+	.pokemon-card.insecte- {
 		background: linear-gradient(#98d65e, #c2f0a9);
 	}
 
-	.pokemon-card.roche {
+	.pokemon-card.roche- {
 		background: linear-gradient(#a79575, #d1c0a5);
 	}
 
-	.pokemon-card.spectre {
+	.pokemon-card.spectre- {
 		background: linear-gradient(#5d5d5d, #b5b5b5);
 	}
 
-	.pokemon-card.dragon {
+	.pokemon-card.dragon- {
 		background: linear-gradient(#ff881c, #ffc071);
 	}
 
-	.pokemon-card.acier {
+	.pokemon-card.acier- {
 		background: linear-gradient(#838383, #b2b2b2);
 	}
 
-	.pokemon-card.ténèbres {
+	.pokemon-card.ténèbres- {
 		background: linear-gradient(#383838, #a0a0a0);
 	}
 
-	.pokemon-card.fée {
+	.pokemon-card.fée- {
 		background: linear-gradient(#ed77aa, #fad4e4);
 	}
 
+	.pokemon-card.plante-poison {
+		background: linear-gradient(#78c850, #a8b820, #a040a0, #c183c1);
+		}
+		
+		.pokemon-card.vol-poison {
+		background: linear-gradient(#a890f0, #c183c1, #a040a0);
+		}
+		
+		.pokemon-card.eau-poison {
+		background: linear-gradient(#6890f0, #c183c1, #a040a0);
+		}
+		
+		.pokemon-card.combat-poison {
+		background: linear-gradient(#c03028, #7038f8, #a040a0, #c183c1);
+		}
+		
+		.pokemon-card.sol-poison {
+		background: linear-gradient(#e0c068, #927d44, #a040a0, #c183c1);
+		}
+		
+		.pokemon-card.roche-poison {
+		background: linear-gradient(#b8a038, #705848, #a040a0, #c183c1);
+		}
+		
+		.pokemon-card.acier-poison {
+		background: linear-gradient(#b8b8d0, #d1c1c0, #a040a0, #c183c1);
+		}
+		
+		.pokemon-card.spectre-poison {
+		background: linear-gradient(#705898, #a8a8c0, #a040a0, #c183c1);
+		}
+		
+		.pokemon-card.dragon-poison {
+		background: linear-gradient(#7038f8, #b8a038, #a040a0, #c183c1);
+		}
+		
+		.pokemon-card.ténèbres-poison {
+		background: linear-gradient(#705848, #a8a8a8, #a040a0, #c183c1);
+		}
+
+		
+	.pokemon-card.poison-plante {
+		background: linear-gradient(#78c850, #a8b820, #a040a0, #c183c1);
+		}
+		
+		.pokemon-card.poison-vol {
+		background: linear-gradient(#a890f0, #c183c1, #a040a0);
+		}
+		
+		.pokemon-card.poison-eau {
+		background: linear-gradient(#6890f0, #c183c1, #a040a0);
+		}
+		
+		.pokemon-card.poison-combat {
+		background: linear-gradient(#c03028, #7038f8, #a040a0, #c183c1);
+		}
+		
+		.pokemon-card.poison-sol {
+		background: linear-gradient(#e0c068, #927d44, #a040a0, #c183c1);
+		}
+		
+		.pokemon-card.poison-roche {
+		background: linear-gradient(#b8a038, #705848, #a040a0, #c183c1);
+		}
+		
+		.pokemon-card.poison-acier {
+		background: linear-gradient(#b8b8d0, #d1c1c0, #a040a0, #c183c1);
+		}
+		
+		.pokemon-card.poison-spectre {
+		background: linear-gradient(#705898, #a8a8c0, #a040a0, #c183c1);
+		}
+		
+		.pokemon-card.poison-dragon {
+		background: linear-gradient(#7038f8, #b8a038, #a040a0, #c183c1);
+		}
+		
+		.pokemon-card.poison-ténèbres {
+		background: linear-gradient(#705848, #a8a8a8, #a040a0, #c183c1);
+		}
 
 	.banner {
 		position: relative;
@@ -453,6 +533,25 @@
 	
 	#save-btn:hover {
 		background-color: #3e8e41;
+	}
+
+	#pokemon-form {
+		text-align: center;
+	}
+
+	#back-btn {
+		float: left;
+		margin-left: 10px;
+		background-color: #4c72af;
+		color: white;
+		padding: 12px 20px;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+	}
+	
+	#back-btn:hover {
+		background-color: #3e678e;
 	}
 	
 	.delete-btn {
