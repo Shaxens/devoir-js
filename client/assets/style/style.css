@@ -3,6 +3,26 @@
 
 @import 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap';
 
+#add-pokemon {
+  display: block;
+  margin: 0 auto;
+	background-color: #4c74af;
+	border: none;
+	color: white;
+	padding: 10px 20px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 16px;
+	cursor: pointer;
+	border-radius: 4px;
+	transition: all 0.3s ease;
+	width: fit-content;
+}
+
+#add-pokemon:hover {
+	background-color: #3e4d8e;
+}
+
 	#pokemon-list {
 		display: flex;
 		flex-wrap: wrap;
@@ -24,6 +44,7 @@
 		background: linear-gradient(#f9bc61, #fde8c9);
 		box-shadow: 0px 6px 6px -3px rgba(0, 0, 0, 0.2), 0px 10px 14px 1px rgba(0, 0, 0, 0.14), 0px 4px 18px 3px rgba(0, 0, 0, 0.12);
 		border-radius: 8px;
+		position: relative;
 	}
 
 	.pokemon-name {
@@ -110,6 +131,7 @@
 		justify-content: center;
 		align-items: center;
 	}
+
 	.details-btn {
 		display: inline-block;
 		background-color: #4CAF50;
@@ -360,3 +382,99 @@
 	.pokemon-card.fée {
 		background: linear-gradient(#ed77aa, #fad4e4);
 	}
+
+
+	.banner {
+		position: relative;
+		width: 100%;
+		height: 200px;
+		background-color: #222;
+		color: #fff;
+		text-align: center;
+	}
+	
+	canvas {
+		display: block; 
+		position: absolute;
+	}
+
+	h1 {
+		text-align: center;
+	}
+	
+	#pokemon-details {
+		text-align: center;
+	}
+
+	.my-item {
+		display: flex;
+		margin: 0 30vw 10px 30vw;
+	}
+	
+	.my-item label {
+		width: 120px;
+		margin-right: 10px;
+	}
+	
+	.my-item input[type="text"],
+	.my-item select,
+	.my-item input[type="number"] {
+		flex: 1;
+		padding: 5px;
+		font-size: 16px;
+		border: 1px solid #ccc;
+		border-radius: 5px;
+	}
+	
+	.my-item select {
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.7,9.6l4.6,4.6l4.6-4.6c0.8-0.8,2.1-0.8,2.8,0c0.8,0.8,0.8,2.1,0,2.8l-6.1,6.1c-0.4,0.4-0.9,0.6-1.4,0.6s-1-0.2-1.4-0.6l-6.1-6.1c-0.8-0.8-0.8-2.1,0-2.8C4.6,8.8,5.9,8.8,6.7,9.6z" fill="%23333"/></svg>') no-repeat;
+		background-position: right 10px center;
+		background-size: 20px 20px;
+	}
+	
+	
+	#sprite-img {
+		display: block;
+		margin: 0 auto;
+	}
+	
+	#save-btn {
+		background-color: #4CAF50;
+		color: white;
+		padding: 12px 20px;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+		margin-top: 20px;
+	}
+	
+	#save-btn:hover {
+		background-color: #3e8e41;
+	}
+	
+	.delete-btn {
+		display: none;
+		transition: 0.2s;
+	}
+	.pokemon-card:hover > .delete-btn {
+		position: absolute;
+		top: 0px;
+		right: 20px;
+		width: 20px;
+		height: 20px;
+		border: none;
+		background-color: transparent;
+		font-size: 40px;
+		color: #ff0000;
+		cursor: pointer;
+		display: flex;
+		transition: 0.2s;
+	}
+	
+	.pokemon-card:hover > .delete-btn:hover {
+		color: #cc0000;
+	}
+	

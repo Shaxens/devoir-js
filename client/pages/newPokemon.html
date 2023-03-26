@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Création de pokémon</title>
+    <script type="module" src="../assets/script/newPokemon.js"></script>
+  <link rel="stylesheet" href="../assets/style/style.css">
+
+</head>
+<body>
+  <div class="banner">
+    <canvas width="800" height="190"></canvas>
+  </div>
+  <br>
+  <div id="pokemon-form">
+    <div class="my-item">
+      <label for="new-name">Nom:</label>
+      <input type="text" id="new-name" name="new-name" value="">
+    </div>
+    <div class="my-item">
+      <label for="new-firstType">Type 1 :</label>
+      <select id="new-firstType" name="new-firstType">
+        <option value=""></option>
+      </select>
+    </div>
+    <div class="my-item">
+      <label for="new-secondType">Type 2 :</label>
+      <select id="new-secondType" name="new-secondType">
+      <option value=""></option>
+    </select>
+    </div>
+    <div class="my-item">
+      <label for="new-image">Image:</label>
+      <input type="text" id="new-image" name="new-image" value="">
+    </div>
+    <div class="my-item">
+      <label for="new-sprite">Sprite image:</label>
+      <input type="text" id="new-sprite" name="new-sprite" value="">
+    </div>
+    <div class="my-item">
+      <label for="new-HP">PV:</label>
+      <input type="number" id="new-HP" name="new-HP" value="" min="1" max="255">
+    </div>
+    <div class="my-item">
+      <label for="new-attack">Attaque:</label>
+      <input type="number" id="new-attack" name="new-attack" value="" min="1" max="255">
+    </div>
+    <div class="my-item">
+      <label for="new-defense">Défense:</label>
+      <input type="number" id="new-defense" name="new-defense" value="" min="1" max="255">
+    </div>
+    <div class="my-item">
+      <label for="new-special_attack">Attaque Spéciale:</label>
+      <input type="number" id="new-special_attack" name="new-special_attack" value="" min="1" max="255">
+    </div>
+    <div class="my-item">
+      <label for="new-special_defense">Défense Spéciale:</label>
+      <input type="number" id="new-special_defense" name="new-special_defense" value="" min="1" max="255">
+    </div>
+    <div class="my-item">
+      <label for="new-speed">Vitesse:</label>
+      <input type="number" id="new-speed" name="new-speed" value="" min="1" max="255">
+    </div>
+    <button id="save-btn">Créer le pokemon</button>
+  </div>
+</body>
+</html>

@@ -8,8 +8,9 @@ fetch('/api/pokemon')
       myCard.classList.add('pokemon-body');
 
       myCard.innerHTML += `
-        <div class="pokemon-card ${pokemon.apiTypes[0].name.toLowerCase()}-${pokemon?.apiTypes[1]?.name?.toLowerCase()}">
-          <div class="pokemon-content">
+      <div class="pokemon-card ${pokemon.apiTypes[0].name.toLowerCase()}-${pokemon?.apiTypes[1]?.name?.toLowerCase()}">
+      <button class="delete-btn" data-id="${pokemon._id}">&times;</button>  
+        <div class="pokemon-content">
             <div class="middle ${pokemon.name}">
               <div>
                 <p class="pokemon-name">${pokemon.name}</p><br>
@@ -41,20 +42,36 @@ fetch('/api/pokemon')
       pokemonCards.appendChild(myCard)
       
       myCard.querySelector('.details-btn').addEventListener('click', () => {
+        const type = pokemon.apiTypes[0].name.toLowerCase();
+        localStorage.setItem('pokemonType', type);
+        console.log(type)
         window.location.href = `/pokemon/${pokemon._id}`;
       });
-      
-      
-      
 
-      // body.appendChild(card);
-      // card.appendChild(content);
-      // content.appendChild(middle);
-      // content.appendChild(bottom);
-      // middle.appendChild(title);
-      // middle.appendChild(image);
-      // bottom.appendChild(hp)
-      // pokemonCards.appendChild(body)
+const deleteButtons = document.querySelectorAll('.delete-btn');
+
+// Ajouter un écouteur d'événements pour chaque bouton de suppression
+deleteButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    // Récupérer l'id du pokemon à supprimer
+    const pokemonId = button.dataset.id;
+    fetch(`/api/pokemon/${pokemonId}`, {
+      method: 'DELETE'
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+    })
+    .catch(error => {
+      console.error(error);
     });
+  });
+});
+
+    });
+    document.querySelector('#add-pokemon').addEventListener('click', () => {
+      window.location.href = '/add';
+    });;
+
   })
   .catch(error => console.error(error));
